@@ -126,6 +126,11 @@ class ProfilePage extends StatelessWidget {
                         label: 'Bisnis',
                         value: 'KUDECANT (Decant Parfum)',
                       ),
+                      InfoTile(
+                        icon: Icons.sports_esports,
+                        label: 'Hobi',
+                        value: 'eFootball',
+                      ),
                     ],
                   ),
                 ),
