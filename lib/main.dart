@@ -112,6 +112,23 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
+
+                const Card(
+                  child: Column(
+                    children: [
+                      InfoTile(
+                        icon: Icons.build,
+                        label: 'Keahlian',
+                        value: 'Full Stack, Web Development, UI & UX',
+                      ),
+                      InfoTile(
+                        icon: Icons.store,
+                        label: 'Bisnis',
+                        value: 'KUDECANT (Decant Parfum)',
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
