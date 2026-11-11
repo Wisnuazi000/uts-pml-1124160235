@@ -42,7 +42,10 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.grey[200],
         title: const Text(
           'Profil Mahasiswa',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
         ),
         actions: [
           IconButton(
@@ -81,6 +84,34 @@ class ProfilePage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),
+
+                const Card(
+                  child: Column(
+                    children: [
+                      InfoTile(
+                        icon: Icons.email,
+                        label: 'Email',
+                        value: 'wisnuazi@gmail.com',
+                      ),
+                      InfoTile(
+                        icon: Icons.phone,
+                        label: 'Nomor HP',
+                        value: '+62 812-3456-7890',
+                      ),
+                      InfoTile(
+                        icon: Icons.class_,
+                        label: 'Kelas',
+                        value: 'Shift',
+                      ),
+                      InfoTile(
+                        icon: Icons.code,
+                        label: 'Akun GitHub',
+                        value: 'wisnuazi000',
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 16),
               ],
             ),
           ),
