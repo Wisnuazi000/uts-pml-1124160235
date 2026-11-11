@@ -58,6 +58,16 @@ class ProfilePage extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
+                CircleAvatar(
+                  radius: 50,
+                  backgroundColor: Colors.grey[200],
+                  child: const Icon(
+                    Icons.person,
+                    size: 50,
+                    color: Colors.black87,
+                  ),
+                ),
+                const SizedBox(height: 16),
               ],
             ),
           ),
