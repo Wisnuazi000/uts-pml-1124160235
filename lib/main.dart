@@ -44,6 +44,12 @@ class ProfilePage extends StatelessWidget {
           'Profil Mahasiswa',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.share, color: Colors.black87),
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   } 
