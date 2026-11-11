@@ -74,6 +74,13 @@ class ProfilePage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 const SizedBox(height: 8),
+
+                Text(
+                  'NIM: 1124160235\nInformation Systems & Software Engineering',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 24),
               ],
             ),
           ),
