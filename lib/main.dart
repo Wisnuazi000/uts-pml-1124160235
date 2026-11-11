@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       ),
       themeMode: ThemeMode.system,
 
-      home: const Scaffold(),
+      home: const ProfilePage(),
     );
   }
 }
@@ -68,11 +68,17 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
+
+                Text(
+                  'Wisnu Azi',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                const SizedBox(height: 8),
               ],
             ),
           ),
         ),
       ),
     );
-  } 
+  }
 }
