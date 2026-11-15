@@ -100,7 +100,52 @@ class _ProfilePageState extends State<ProfilePage> {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            children: [],
+            children: [
+              CircleAvatar(
+                radius: 56,
+                backgroundColor: colorScheme.primaryContainer,
+                child: const CircleAvatar(
+                  radius: 52,
+                  backgroundImage: AssetImage('assets/images/profile.jpg'),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                _profile.nama,
+                style: Theme.of(context).textTheme.headlineSmall
+                    ?.copyWith(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'NIM: ${_profile.nim} • Kelas: ${_profile.kelas}',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.primary,
+                  fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 2),
+              Text(
+                _profile.prodi,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 12),
+              Card(
+                elevation: 0,
+                color: colorScheme.surfaceContainerHighest.withOpacity(0.5),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Text(
+                    _profile.bio,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+            ],
           ),
         ),
       ),
