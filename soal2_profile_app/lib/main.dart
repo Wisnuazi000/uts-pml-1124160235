@@ -47,6 +47,28 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       themeMode: _themeMode,
+
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => LoginPage(
+              isDarkMode: isDarkMode,
+              onToggleTheme: _toggleTheme,
+            ),
+        '/profile': (context) => ProfilePage(
+              isDarkMode: isDarkMode,
+              onToggleTheme: _toggleTheme,
+            ),
+        '/about': (context) => const AboutPage(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/edit-profile') {
+          final profile = settings.arguments as Profile;
+          return MaterialPageRoute(
+            builder: (context) => EditProfilePage(profile: profile),
+          );
+        }
+        return null;
+      },
     );
   }
 }
