@@ -48,6 +48,23 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.dispose();
   }
 
+  void _simpanProfil() {
+    if (!_formKey.currentState!.validate()) return;
+
+    final dataBaru = widget.profile.copyWith(
+      nama: _namaController.text.trim(),
+      nim: _nimController.text.trim(),
+      prodi: _prodiController.text.trim(),
+      kelas: _kelasController.text.trim(),
+      bio: _bioController.text.trim(),
+      email: _emailController.text.trim(),
+      hp: _hpController.text.trim(),
+      github: _githubController.text.trim(),
+    );
+
+    Navigator.pop(context, dataBaru);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -169,6 +186,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                 ),
                 const SizedBox(height: 24),
+                SizedBox(
+                  height: 48,
+                  child: FilledButton.icon(
+                    onPressed: _simpanProfil,
+                    icon: const Icon(Icons.save),
+                    label: const Text(
+                      'SIMPAN PERUBAHAN',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
