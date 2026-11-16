@@ -7,14 +7,17 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Tentang Saya')),
+      appBar: AppBar(
+        title: const Text('Tentang Saya'),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           Text(
             'Keahlian & Hobi',
-            style: Theme.of(context).textTheme.titleMedium
-                ?.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           const SizedBox(height: 8),
           const Card(
@@ -41,6 +44,37 @@ class AboutPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
+
+          Text(
+            'Riwayat Pendidikan',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(height: 8),
+          const Card(
+            child: Column(
+              children: [
+                InfoTile(
+                  icon: Icons.school,
+                  label: 'S1 Teknik Informatika',
+                  value: 'Institut Teknologi & Bisnis Bina Sarana Global (Sekarang)',
+                ),
+                Divider(height: 1),
+                InfoTile(
+                  icon: Icons.account_balance,
+                  label: 'SMA / SMK',
+                  value: 'Pendidikan Menengah Atas / Kejuruan',
+                ),
+                Divider(height: 1),
+                InfoTile(
+                  icon: Icons.menu_book,
+                  label: 'SMP',
+                  value: 'Sekolah Menengah Pertama',
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
