@@ -5,69 +5,55 @@ import 'screens/edit_profile_page.dart';
 import 'screens/login_page.dart';
 import 'screens/profile_page.dart';
 
+final ValueNotifier<ThemeMode> appThemeNotifier = ValueNotifier(
+  ThemeMode.light,
+);
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  ThemeMode _themeMode = ThemeMode.light;
-
-  void _toggleTheme(bool isDark) {
-    setState(() {
-      _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final bool isDarkMode = _themeMode == ThemeMode.dark;
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Profil Wisnu Azi',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal,
-          brightness: Brightness.light,
-        ),
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal,
-          brightness: Brightness.dark,
-        ),
-      ),
-      themeMode: _themeMode,
-
-      initialRoute: '/login',
-      routes: {
-        '/login': (context) => LoginPage(
-              isDarkMode: isDarkMode,
-              onToggleTheme: _toggleTheme,
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: appThemeNotifier,
+      builder: (context, currentThemeMode, _) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Profil Wisnu Azi',
+          theme: ThemeData(
+            useMaterial3: true,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.teal,
+              brightness: Brightness.light,
             ),
-        '/profile': (context) => ProfilePage(
-              isDarkMode: isDarkMode,
-              onToggleTheme: _toggleTheme,
+          ),
+          darkTheme: ThemeData(
+            useMaterial3: true,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.teal,
+              brightness: Brightness.dark,
             ),
-        '/about': (context) => const AboutPage(),
-      },
-      onGenerateRoute: (settings) {
-        if (settings.name == '/edit-profile') {
-          final profile = settings.arguments as Profile;
-          return MaterialPageRoute(
-            builder: (context) => EditProfilePage(profile: profile),
-          );
-        }
-        return null;
+          ),
+          themeMode: currentThemeMode,
+          initialRoute: '/login',
+          routes: {
+            '/login': (context) => const LoginPage(),
+            '/profile': (context) => const ProfilePage(),
+            '/about': (context) => const AboutPage(),
+          },
+          onGenerateRoute: (settings) {
+            if (settings.name == '/edit-profile') {
+              final profile = settings.arguments as Profile;
+              return MaterialPageRoute(
+                builder: (context) => EditProfilePage(profile: profile),
+              );
+            }
+            return null;
+          },
+        );
       },
     );
   }

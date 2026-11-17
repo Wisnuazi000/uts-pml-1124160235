@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  final bool isDarkMode;
-  final ValueChanged<bool> onToggleTheme;
+import '../main.dart';
 
-  const LoginPage({
-    super.key,
-    required this.isDarkMode,
-    required this.onToggleTheme,
-  });
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -42,14 +37,20 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = appThemeNotifier.value == ThemeMode.dark;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login Mahasiswa'),
         actions: [
           IconButton(
-            tooltip: 'Ganti Tema',
-            icon: Icon(widget.isDarkMode ? Icons.light_mode : Icons.dark_mode),
-            onPressed: () => widget.onToggleTheme(!widget.isDarkMode),
+            tooltip: isDark ? 'Mode Terang' : 'Mode Gelap',
+            icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+            onPressed: () {
+              appThemeNotifier.value = isDark
+                  ? ThemeMode.light
+                  : ThemeMode.dark;
+            },
           ),
         ],
       ),

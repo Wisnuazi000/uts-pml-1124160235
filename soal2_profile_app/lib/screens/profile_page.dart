@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
+import '../main.dart';
 import '../models/profile.dart';
 import '../widgets/info_tile.dart';
 
 class ProfilePage extends StatefulWidget {
-  final bool isDarkMode;
-  final ValueChanged<bool> onToggleTheme;
-
-  const ProfilePage({
-    super.key,
-    required this.isDarkMode,
-    required this.onToggleTheme,
-  });
+  const ProfilePage({super.key});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -49,15 +43,21 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    // --- AWAL PERUBAHAN 2 ---
+    final isDark = appThemeNotifier.value == ThemeMode.dark;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profil Mahasiswa'),
         actions: [
           IconButton(
-            tooltip: widget.isDarkMode ? 'Mode Terang' : 'Mode Gelap',
-            icon: Icon(widget.isDarkMode ? Icons.light_mode : Icons.dark_mode),
-            onPressed: () => widget.onToggleTheme(!widget.isDarkMode),
+            tooltip: isDark ? 'Mode Terang' : 'Mode Gelap',
+            icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+            onPressed: () {
+              appThemeNotifier.value = isDark
+                  ? ThemeMode.light
+                  : ThemeMode.dark;
+            },
           ),
         ],
       ),
@@ -102,8 +102,12 @@ class _ProfilePageState extends State<ProfilePage> {
             SwitchListTile(
               secondary: const Icon(Icons.brightness_6),
               title: const Text('Mode Gelap'),
-              value: widget.isDarkMode,
-              onChanged: widget.onToggleTheme,
+              value: isDark,
+              onChanged: (value) {
+                appThemeNotifier.value = value
+                    ? ThemeMode.dark
+                    : ThemeMode.light;
+              },
             ),
             const Divider(),
             ListTile(
@@ -154,7 +158,9 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(height: 12),
               Card(
                 elevation: 0,
-                color: colorScheme.surfaceContainerHighest.withOpacity(0.5),
+                color: colorScheme.surfaceContainerHighest.withValues(
+                  alpha: 0.5,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Text(
