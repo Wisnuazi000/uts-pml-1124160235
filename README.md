@@ -24,7 +24,7 @@
 
 ## Cara Menjalankan Proyek Soal 2
 ```bash
-git clone [https://github.com/Wisnuazi000/uts-pml-1124160235.git](https://github.com/Wisnuazi000/uts-pml-1124160235.git)
+git clone https://github.com/Wisnuazi000/uts-pml-1124160235.git
 cd uts-pml-1124160235
 cd soal2-profil-app
 flutter pub get
