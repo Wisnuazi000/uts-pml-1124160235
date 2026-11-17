@@ -6,6 +6,10 @@
 - **Jurusan:** Software Enginering
 - **Kelas:** Shift
 
+## Video Presentasi Demo & Penjelasan Kode
+Tonton demonstrasi lengkap aplikasi dan penjelasan *source code* melalui tautan berikut:
+- **YouTube:** https://youtu.be/A2sgHi0rohw
+
 ## Struktur Repository
 - `soal1-live-coding/` — Aplikasi Profil Mahasiswa (StatelessWidget)
 - `soal2-profil-app/` — Aplikasi Profil Mahasiswa Android (Login, Profil, Edit Profil, Tentang Saya, Dark Mode)
